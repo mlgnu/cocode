@@ -1,0 +1,15 @@
+{
+  "name": "@cocode/root",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:client": "pnpm -F @cocode/client start",
+    "start:server": "pnpm -F @cocode/server start",
+    "start": "pnpm -r start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

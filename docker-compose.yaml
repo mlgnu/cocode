@@ -1,0 +1,38 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/server
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - rdb
+    networks:
+      - app-network
+  db:
+    image: postgres:alpine
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - app-network
+  rdb:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+volumes:
+  db-data:
+
+networks:
+  app-network:
+    driver: bridge
